@@ -23,12 +23,10 @@ class listen:
             for key in dict_key:
                 for double in file_dict_double:
                     if key == double:
-                        print NowTime+ '--' + 'Add/Change the file:'+ key + '\t'
                         val1 = NowTime+ '--' + 'Add/Change the file:'+ key + '\t'
                         self.s.send(val1)
                 for three in file_dict_three:
-                    if key == three:
-                        print NowTime+ '--' + 'Del/Change the file:'+ key + '\t'
+                    if key == three: 
                         val2 = NowTime+ '--' + 'Del/Change the file:'+ key + '\t'
                         self.s.send(val2)
         #文件权限/大小/时间
@@ -36,15 +34,12 @@ class listen:
             if file_dict_three[value] == file_dict_double[value]:
                 pass
             elif file_dict_double[value]['Size'] == file_dict_three[value]['Size'] and file_dict_double[value]['Permissions'] == file_dict_three[value]['Permissions']:
-                print NowTime + '--' + 'Change Time,Don\'t Change file Permissions And Size:'+ value + '--' + str(file_dict_double[value]) + '\t'
                 val3 = NowTime + '--' + 'Change Time,Don\'t Change file Permissions And Size:'+ value + '--' + str(file_dict_double[value]) + '\t'
                 self.s.send(val3)
             elif file_dict_double[value]['Size'] != file_dict_three[value]['Size']:
-                print NowTime+ '--' + 'Change the file Size,Other results is:'+ value + '--' + str(file_dict_double[value]) + '\t'
                 val4 = NowTime+ '--' + 'Change the file Size,Other results is:'+ value + '--' + str(file_dict_double[value]) + '\t'
                 self.s.send(val4)
             elif file_dict_double[value]['Permissions'] != file_dict_three[value]['Permissions']:
-                print NowTime + '--' + 'Change the file Permissions,Other results is:'+ value + '--' + str(file_dict_double[value]) + '\t'
                 val5 = NowTime + '--' + 'Change the file Permissions,Other results is:'+ value + '--' + str(file_dict_double[value]) + '\t'
                 self.s.send(val5)
             else:
